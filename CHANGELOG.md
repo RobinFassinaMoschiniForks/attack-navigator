@@ -9,6 +9,119 @@
     The creation of the tag can be disabled with the --no-git-tag-version if desired.
 -->
 
+# 4.9.5 - 23 April 2024
+
+Adds support for ATT&CK v15.0.
+
+## Improvements
+- Added "mark all as reviewed" and "expand visible techniques" options to the Layer Upgrade UI to improve the overall technique review workflow. See issue [#595](https://github.com/mitre-attack/attack-navigator/issues/595).
+
+
+# 4.9.4 - 29 February 2024
+
+## Fixes
+- Fixed a bug with selecting techniques by data sources in the search & multi-select interface. See issue [#622](https://github.com/mitre-attack/attack-navigator/issues/622).
+
+# 4.9.3 - 27 February 2024
+
+## Fixes
+- Fixed a bug with loading Navigator layers on ATT&CK v10 or earlier. See issue [#620](https://github.com/mitre-attack/attack-navigator/issues/620).
+
+# 4.9.2 - 26 February 2024
+
+## Fixes
+- Fixed an issue with loading multiple bundles into a single matrix. See issue [#505](https://github.com/mitre-attack/attack-navigator/issues/505).
+- Fixed an issue where the outdated layer dialog box would not load the latest layer file format specification. See issue [#617](https://github.com/mitre-attack/attack-navigator/issues/617).
+- Fixed an issue in the ATT&CK version comparison which caused deprecated techniques to appear in the "review additions" section of the Layer Upgrade UI. See issue [#618](https://github.com/mitre-attack/attack-navigator/issues/618).
+
+# 4.9.1 - 14 November 2023
+
+Adds support for ATT&CK v14.1.
+
+## Fixes
+- Fixed an issue with the Dockerfile which was preventing the docker image from building. See issue [#598](https://github.com/mitre-attack/attack-navigator/pull/598).
+
+# 4.9.0 - 31 October 2023
+
+Adds support for ATT&CK v14.0.
+
+## New Features
+- Consolidated the JSON, Excel, and SVG export options into a single dropdown. Added an option to the export interface to only download annotations on visible techniques. See issue [#215](https://github.com/mitre-attack/attack-navigator/issues/215).
+- Extended search interface to support searching for techniques by asset.
+- Added the ability to configure how sub-techniques are displayed in the layer file through the `expandedSubtechniques` property - annotated, all, or none. See issue [#560](https://github.com/mitre-attack/attack-navigator/issues/560) and the `Layer File Format Changes` section.
+- Added functionality to download all open layers in JSON or MS Excel format. Also added the ability to upload a file with multiple layers. See issue  [#128](https://github.com/mitre-attack/attack-navigator/issues/128).
+- Added a new toolbar option to enable or disable the sticky toolbar.
+
+## Improvements
+- Added ability to render SVG export in dark mode. See issue [#556](https://github.com/mitre-attack/attack-navigator/issues/556).
+- Added the ability to configure whether or not to display the metadata underline either by editing `src/assets/config.json` or through the "Create Customized Navigator" interface. See issue [#400](https://github.com/mitre-attack/attack-navigator/issues/400).
+- Added functionality to scroll across the open tabs in the navigator. See issue [#581](https://github.com/mitre-attack/attack-navigator/issues/580).
+- Improved the matrix print view. See issue [#508](https://github.com/mitre-attack/attack-navigator/issues/508).
+- Added preventative measures for reverse tabnabbing. See issue [#527](https://github.com/mitre-attack/attack-navigator/issues/527).
+- Improved the layer version mismatch warning. For a major version change, the latest layer format and the changelog are linked. For a minor version change, warning message disappears in 6 seconds and links to the changlog. See issue [#260](https://github.com/mitre-attack/attack-navigator/issues/260).
+- Added functionality to scroll down with the Tactics header frozen to the top. See issue [#404](https://github.com/mitre-attack/attack-navigator/issues/404).
+- Improved the Dockerfile for faster builds. See issue [#411](https://github.com/mitre-attack/attack-navigator/pull/411).
+
+## Fixes
+- Fixed an issue where certain layer settings were not restored when upgrading the layer ATT&CK version. See issue [#597](https://github.com/mitre-attack/attack-navigator/issues/597).
+
+## Miscellaneous
+- Refactored the codebase to improve maintainability of the application.
+
+## Layer File Format Changes
+
+Layer file format updated to version 4.5. See [layers/LAYERFORMATv4_5.md](layers/LAYERFORMATv4_5.md) for the full specification.
+
+- Added support for selecting only visible techniques. The `selectVisibleTechniques` field specifies whether or not hidden techniques will be included in the different select behaviors.
+- Added support for configuring how sub-techniques are displayed in the layer with the `expandedSubtechniques` field. This property can be set to `all`, `annotated`, or `none` to expand all sub-techniques, expand only annotated sub-techniques, or collapse all sub-techniques, respectively.
+- Added support for a list of layers. Users can now upload a layer file that contains multiple layers.
+
+# 4.8.2 - 9 May 2023
+
+Adds support for ATT&CK v13.1.
+
+## Miscellaneous
+
+- Refactored the codebase to improve maintainability of the application.
+
+# 4.8.1 - 25 April 2023
+
+Adds support for ATT&CK v13.
+
+## Improvements
+- Users can disable the background color effect on manually assigned colors, aggregate scores, or non-aggregate scores by editing `src/assets/config.json` or through the "Create Customized Navigator" interface. See issue [#371](https://github.com/mitre-attack/attack-navigator/issues/371).
+- Added image orientation options and new preset image size options to the SVG exporter. See issue [#547](https://github.com/mitre-attack/attack-navigator/pull/547).
+
+## Fixes
+- Fixed an issue where aggregate scores were calculated on techniques with no sub-techniques. See issue [#539](https://github.com/mitre-attack/attack-navigator/issues/539).
+- Fixed an issue where pinned tooltips would cover the "pin/unpin tooltip" option in the context menu. See issue [#542](https://github.com/mitre-attack/attack-navigator/issues/542).
+- Fixed inconsistencies with dark theme in the SVG exporter. See issue [#546](https://github.com/mitre-attack/attack-navigator/pull/546).
+
+# 4.8.0 - 20 December 2022
+
+## New Features
+- Added the ability to create a layer from a custom [Collection](https://github.com/center-for-threat-informed-defense/attack-workbench-frontend/blob/develop/docs/collections.md#collections) or Stix Bundle. Users can specify the URL, version, and domain of a custom bundle in the Create New Layer interface. This will load the base data from the file at the given URL into the Navigator. Layers created from a custom collection/STIX bundle support all of the standard layer features (annotations, filter/sort, download/upload, layer-layer operations, etc.), apart from upgrading the layer to a newer ATT&CK version. See issue [#499](https://github.com/mitre-attack/attack-navigator/issues/499).
+
+## Layer File Format Changes
+
+Layer file format updated to version 4.4. This update adds support for layers created with a custom collection or STIX bundle; the optional `customDataURL` field contains the URL from which custom data was loaded. This update is fully backwards compatible with layer format v4.3 since the added field is optional. See [layers/LAYERFORMATv4_4.md](layers/LAYERFORMATv4_4.md) for the full specification.
+
+# 4.7.1 - 8 November 2022
+
+Adds support for ATT&CK v12.1.
+
+# 4.7.0 - 25 October 2022
+
+Adds support for ATT&CK v12.
+
+## New Features
+- Integration compatibility with the [ATT&CK Workbench](https://github.com/center-for-threat-informed-defense/attack-workbench-frontend). See issue [#474](https://github.com/mitre-attack/attack-navigator/pull/474).
+- Extended search interface to support searching for techniques based on campaign. See [#501](https://github.com/mitre-attack/attack-navigator/issues/501).
+
+## Fixes
+- Fixed an issue with the Docker build caused by conflicting peer dependencies. See issue [#497](https://github.com/mitre-attack/attack-navigator/issues/497).
+- Fixed an issue with loading STIX bundles that do not contain all of the tactics referenced by the included matrix. See issue [#489](https://github.com/mitre-attack/attack-navigator/issues/489).
+
 # v4.6.6 - 26 August 2022
 
 ## Fixes

@@ -1,5 +1,3 @@
-[![build status](https://github.com/mitre-attack/attack-navigator/workflows/Build/badge.svg)](https://github.com/mitre-attack/attack-navigator/actions)
-
 # ATT&CK® Navigator
 
 The ATT&CK Navigator is designed to provide basic navigation and annotation of [ATT&CK](https://attack.mitre.org) matrices, something that people are already doing today in tools like Excel.  We've designed it to be simple and generic - you can use the Navigator to visualize your defensive coverage, your red/blue team planning, the frequency of detected techniques or anything else you want to do.  The Navigator doesn't care - it just allows you to manipulate the cells in the matrix (color coding, adding a comment, assigning a numerical value, etc.).  We thought having a simple tool that everyone could use to visualize the matrix would help make it easy to use ATT&CK.
@@ -30,7 +28,7 @@ Use our [GitHub Issue Tracker](https://github.com/mitre-attack/attack-navigator/
 
 ## Requirements
 
-* [Node.js](https://nodejs.org) version 8 or greater
+* [Node.js v16](https://nodejs.org)
 * [AngularCLI](https://cli.angular.io)
 
 ## Supported Browsers
@@ -63,7 +61,7 @@ Use our [GitHub Issue Tracker](https://github.com/mitre-attack/attack-navigator/
 1. Run `ng build` within the **nav-app** directory
 2. Copy files from `nav-app/dist/` directory
 
-_Note: `ng build --prod` does not currently work for ATT&CK Navigator without additional flags. To build the production environment instead use `ng build --prod --aot=false --build-optimizer=false`._
+_Note: `ng build --configuration production` does not currently work for ATT&CK Navigator without additional flags. To build the production environment instead use `ng build --configuration production --aot=false --build-optimizer=false`._
 
 ### Running the Navigator offline
 
@@ -76,7 +74,7 @@ _Note: `ng build --prod` does not currently work for ATT&CK Navigator without ad
 
 ## Documentation
 
-When viewing the app in a browser, click on the **?** icon to the right of the **ATT&CK® Navigator** title to view its documentation.
+When viewing the Navigator in a browser, click on the **?** icon in the upper right corner to view the in-app documentation.
 
 ## Layers Folder
 
@@ -240,6 +238,10 @@ The following is an example iframe which embeds our [*Bear APTs](layers/data/sam
 
 [Cyber Threat Intelligence repository](https://github.com/mitre/cti) of the ATT&CK catalog expressed in STIX 2.0 JSON.
 
+### ATT&CK STIX Data
+
+[ATT&CK STIX Data repository](https://github.com/mitre-attack/attack-stix-data) of the ATT&CK catalog expressed in STIX 2.1 JSON.
+
 ### ATT&CK
 
 ATT&CK® is a curated knowledge base and model for cyber adversary behavior, reflecting the various phases of an adversary’s lifecycle and the platforms they are known to target. ATT&CK is useful for understanding security risk against known adversary behavior, for planning security improvements, and verifying defenses work as expected.
@@ -258,7 +260,7 @@ STIX is designed to improve many different capabilities, such as collaborative t
 
 ## Notice
 
-Copyright 2020 The MITRE Corporation
+Copyright 2024 The MITRE Corporation
 
 Approved for Public Release; Distribution Unlimited. Case Number 18-0128.
 
