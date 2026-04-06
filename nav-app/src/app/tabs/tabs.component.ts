@@ -788,12 +788,12 @@ export class TabsComponent implements AfterViewInit {
                         let layerVersionStr = viewModel.deserializeDomainVersionID(layerObj);
                         await self.versionMismatchWarning(layerVersionStr);
                         self.versionMismatchWarning(layerVersionStr);
-                        if (!self.dataService.getDomain(viewModel.domainVersionID)) {
-                            throw new Error(`Error: '${viewModel.domain}' (v${viewModel.version}) is an invalid domain.`);
-                        }
-
+                        
                         let isCustom = 'customDataURL' in layerObj;
                         if (!isCustom) {
+                            if (!self.dataService.getDomain(viewModel.domainVersionID)) {
+                                throw new Error(`Error: '${viewModel.domain}' (v${viewModel.version}) is an invalid domain.`);
+                            }
                             await self.upgradeLayer(viewModel, layerObj, true);
                             console.debug(`loaded layer "${viewModel.name}"`);
                         } else {
