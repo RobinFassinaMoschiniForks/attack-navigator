@@ -232,7 +232,7 @@ export class DataService {
     public buildDataComponentToTechniquesMap(domain: Domain, analytics: any[]) {
         for (let det of domain.detectionStrategies) {
             let techniqueRefs = domain.relationships.detection_strategies_detect.get(det.id);
-            let techniqueRef = techniqueRefs.length > 0 ? techniqueRefs[0] : undefined; // should only be one
+            let techniqueRef = techniqueRefs?.length > 0 ? techniqueRefs[0] : undefined; // should only be one
             const technique = domain.getTechniqueById(techniqueRef);
             if (!technique) continue; // no technique found, skip
             for (let analytic_ref of det.analyticRefs) {
